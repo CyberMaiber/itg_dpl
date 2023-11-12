@@ -14,7 +14,8 @@
         <div class="card-body">
           <h5 class="card-title"><a href="{% url 'recipe_detail' recipe_id=recipe.id %}">{{ recipe.title }}</a></h5>
           <p class="card-text">{{ recipe.description }}</p>
-          <p class="card-text"><small class="text-muted">{{ recipe.time }} minutes</small></p>
+          <p class="card-text"><small class="text-muted">{{ recipe.time }} часов</small></p>
+          <p class="card-text"><small class="text-muted">Добавил: {{ recipe.author }}</small></p>
         </div>
       </div>
     </div>
