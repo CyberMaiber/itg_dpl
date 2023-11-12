@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block navmenu %}
+<li class="nav-item">
+  <a class="nav-link" href="{% url 'edit_recipe' recipe_id=recipe.id %}">Изменить рецепт</a>
+</li>
+{% endblock %}
+
+{% load static %}
+
+{% block content %}
+<h1>{{ recipe.title }}</h1>
+<ol>
+<img src="{{ recipe.image.url }}" alt="{{ recipe.title }}">
+<p>{{ recipe.description }}</p>
+</ol>
+<h2>Категория</h2>
+<ul>
+{% for category in recipe.categories.all %}
+  <li>{{ category.name }}</li>
+{% endfor %}
+</ul>
+<h2>Ингредиенты</h2>
+<ol>
+{{ recipe.ingredients|linebreaksbr }}
+</ol>
+<h2>Приготовление</h2>
+<ol>
+{% comment %} {% for step in recipe.steps.split(' ') %}
+  <li>{{ step }}</li>
+{% endfor %} {% endcomment %}
+{{ recipe.steps|linebreaksbr }}
+</ol>
+<p>Время приготовления: {{ recipe.time }} ч </p>
+{% endblock %}
